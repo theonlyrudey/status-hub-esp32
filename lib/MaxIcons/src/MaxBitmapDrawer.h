@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <cstdint>
 #include <memory>
 
 class MD_MAX72XX;
@@ -20,4 +21,3 @@ namespace MaxIcons {
 
 
 } // MaxIcons
-

@@ -12,14 +12,14 @@ namespace MaxIcons {
     {
         _display.clear();
 
-        for (uint8_t sourceY = 0; sourceY < 8; sourceY++)
+        for (std::uint8_t sourceY = 0; sourceY < 8; sourceY++)
         {
-            for (uint8_t sourceX = 0; sourceX < 8; sourceX++)
+            for (std::uint8_t sourceX = 0; sourceX < 8; sourceX++)
             {
                 const bool on = (bitmap[sourceY] & (1 << (7 - sourceX))) != 0;
 
-                const uint8_t displayX = sourceX;
-                const uint8_t displayY = 7 - sourceY;
+                const std::uint8_t displayX = sourceX;
+                const std::uint8_t displayY = 7 - sourceY;
 
                 _display.setPoint(displayY, displayX, on);
             }

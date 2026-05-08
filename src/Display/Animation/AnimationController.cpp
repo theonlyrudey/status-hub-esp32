@@ -28,7 +28,7 @@ void AnimationController::setSequence(const AnimationSequence *sequence, const s
     _needsRender = true;
 }
 
-void AnimationController::setScrollingBitmap(const std::uint8_t *bitmap, const std::uint32_t nowMs, const uint32_t stepMs, const std::int8_t direction, const bool wrap) {
+void AnimationController::setScrollingBitmap(const std::uint8_t *bitmap, const std::uint32_t nowMs, const std::uint32_t stepMs, const std::int8_t direction, const bool wrap) {
     if (bitmap == nullptr) {
         stop();
         return;

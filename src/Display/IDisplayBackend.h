@@ -8,17 +8,17 @@
 #include <string>
 
 struct DisplayCapabilities {
-    uint16_t width;
-    uint16_t height;
+    std::uint16_t width;
+    std::uint16_t height;
     bool monochrome;
     bool supportsBitmap;
     bool supportsAnimation;
-    uint8_t textLevels; // e.g 1 for matrix, more for OLED
+    std::uint8_t textLevels; // e.g 1 for matrix, more for OLED
 };
 
 struct TextLine { std::string text; };
-struct NotificationView { std::string title; std::string body; uint8_t severity; };
-struct ProgressView { std::string label; uint8_t percent; };
+struct NotificationView { std::string title; std::string body; std::uint8_t severity; };
+struct ProgressView { std::string label; std::uint8_t percent; };
 struct StatusView { std::string left; std::string right; };
 struct Bitmap8x8View { const std::uint8_t *bitmap; };
 

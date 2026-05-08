@@ -8,5 +8,5 @@
 class ITickable {
 public:
     virtual ~ITickable() = default;
-    virtual void tick(uint32_t nowMs) = 0;
+    virtual void tick(std::uint32_t nowMs) = 0;
 };

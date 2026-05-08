@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <cstdint>
 #include <MD_MAX72xx.h>
 
 #include "IDisplayBackend.h"
@@ -28,4 +29,3 @@ private:
     MaxIcons::MaxBitmapDrawer _bitmapDrawer;
     MD_MAX72XX &_display;
 };
-
