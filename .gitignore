@@ -3,6 +3,8 @@
 .pioenvs/
 .piolibdeps/
 
+/include/secrets.h
+
 # CLion / JetBrains
 .idea/
 cmake-build-*/
