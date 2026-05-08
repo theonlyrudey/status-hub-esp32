@@ -13,6 +13,6 @@ public:
     virtual void beginSta(const WifiCredentials& credentials) = 0;
     virtual void disconnect() = 0;
     virtual void reconnect() = 0;
-    virtual bool isConnected() const = 0;
-    virtual String localIP() const = 0;
+    virtual bool isConnected() = 0;
+    virtual String localIP() = 0;
 };

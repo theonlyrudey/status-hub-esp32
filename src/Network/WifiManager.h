@@ -22,6 +22,7 @@ public:
     void requestConnect();
     void requestDisconnect();
     bool updateCredentials(const WifiCredentials& credentials);
+    bool updateCredentials(const char* ssid, const char* password);
     WifiState state() const;
     void addListener(IWifiStatusListener* listener);
     void removeListener(IWifiStatusListener* listener);
@@ -46,4 +47,3 @@ private:
 
     std::vector<IWifiStatusListener*> _listeners;
 };
-

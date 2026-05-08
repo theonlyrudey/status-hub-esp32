@@ -5,6 +5,7 @@
 #include "WifiManager.h"
 
 #include <algorithm>
+#include <cstring>
 
 namespace {
     bool hasSsid(const WifiCredentials& credentials) {
@@ -17,6 +18,17 @@ namespace {
             return initial;
         }
         return std::min(initial, config.reconnectMaxMs);
+    }
+
+    template <std::size_t N>
+    void copyStringToField(const char* source, char (&destination)[N]) {
+        static_assert(N > 0, "Field size must be greater than 0");
+        if (source == nullptr) {
+            destination[0] = '\0';
+            return;
+        }
+        std::strncpy(destination, source, N - 1);
+        destination[N - 1] = '\0';
     }
 } // namespace
 
@@ -94,6 +106,13 @@ bool WifiManager::updateCredentials(const WifiCredentials &credentials) {
     _currentReconnectDelayMs = initialReconnectDelay(_config);
     _connectRequested = true;
     return true;
+}
+
+bool WifiManager::updateCredentials(const char *ssid, const char *password) {
+    WifiCredentials credentials{};
+    copyStringToField(ssid, credentials.ssid);
+    copyStringToField(password, credentials.password);
+    return updateCredentials(credentials);
 }
 
 WifiState WifiManager::state() const {
