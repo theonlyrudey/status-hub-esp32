@@ -2,8 +2,7 @@
 // Created by Piotr Rudnicki on 08/05/2026.
 //
 
-#ifndef AGENTNOTIFICATOR_WIFITYPES_H
-#define AGENTNOTIFICATOR_WIFITYPES_H
+#pragma once
 #include <cstdint>
 
 enum class WifiState {
@@ -26,4 +25,3 @@ struct WifiConfig {
     std::uint32_t reconnectMaxMs = 60000;
     bool autoReconnect = true;
 };
-#endif //AGENTNOTIFICATOR_WIFITYPES_H

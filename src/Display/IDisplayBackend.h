@@ -2,8 +2,7 @@
 // Created by Piotr Rudnicki on 07/05/2026.
 //
 
-#ifndef AGENTNOTIFICATOR_IDISPLAYBACKEND_H
-#define AGENTNOTIFICATOR_IDISPLAYBACKEND_H
+#pragma once
 #include <cstdint>
 #include <variant>
 #include <string>
@@ -33,4 +32,3 @@ public:
     virtual void render(const DisplayScene& scene) = 0;
     virtual void clear() = 0;
 };
-#endif //AGENTNOTIFICATOR_IDISPLAYBACKEND_H

@@ -2,8 +2,7 @@
 // Created by Piotr Rudnicki on 07/05/2026.
 //
 
-#ifndef AGENTNOTIFICATOR_ANIMATIONSTATEMACHINE_H
-#define AGENTNOTIFICATOR_ANIMATIONSTATEMACHINE_H
+#pragma once
 
 #include <cstddef>
 #include <cstdint>
@@ -38,4 +37,3 @@ private:
     bool _finished{false};
 };
 
-#endif //AGENTNOTIFICATOR_ANIMATIONSTATEMACHINE_H

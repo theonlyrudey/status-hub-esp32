@@ -2,8 +2,7 @@
 // Created by Piotr Rudnicki on 07/05/2026.
 //
 
-#ifndef AGENTNOTIFICATOR_DISPLAYSTATUSLISTENER_H
-#define AGENTNOTIFICATOR_DISPLAYSTATUSLISTENER_H
+#pragma once
 #include "Animation/AnimationController.h"
 #include "StatusController/IStatusListener.h"
 
@@ -24,4 +23,3 @@ private:
 };
 
 
-#endif //AGENTNOTIFICATOR_DISPLAYSTATUSLISTENER_H

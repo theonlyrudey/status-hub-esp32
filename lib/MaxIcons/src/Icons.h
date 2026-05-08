@@ -2,8 +2,7 @@
 // Created by Piotr Rudnicki on 20/04/2026.
 //
 
-#ifndef AGENTNOTIFICATOR_ICONS_H
-#define AGENTNOTIFICATOR_ICONS_H
+#pragma once
 #include <cstdint>
 class Icons {
 public:
@@ -17,4 +16,3 @@ public:
     static std::uint8_t Error[8];
 };
 
-#endif //AGENTNOTIFICATOR_ICONS_H

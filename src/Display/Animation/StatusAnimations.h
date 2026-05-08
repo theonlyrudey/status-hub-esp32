@@ -2,8 +2,7 @@
 // Created by Piotr Rudnicki on 07/05/2026.
 //
 
-#ifndef AGENTNOTIFICATOR_STATUSANIMATIONS_H
-#define AGENTNOTIFICATOR_STATUSANIMATIONS_H
+#pragma once
 #include "AnimationSequence.h"
 #include "StatusController/Status.h"
 
@@ -14,4 +13,3 @@ namespace StatusAnimations {
 };
 
 
-#endif //AGENTNOTIFICATOR_STATUSANIMATIONS_H

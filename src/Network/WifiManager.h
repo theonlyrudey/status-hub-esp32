@@ -2,8 +2,7 @@
 // Created by Piotr Rudnicki on 08/05/2026.
 //
 
-#ifndef AGENTNOTIFICATOR_WIFIMANAGER_H
-#define AGENTNOTIFICATOR_WIFIMANAGER_H
+#pragma once
 
 #include "ICredentialsStore.h"
 #include "IWifiAdapter.h"
@@ -26,4 +25,3 @@ public:
 };
 
 
-#endif //AGENTNOTIFICATOR_WIFIMANAGER_H

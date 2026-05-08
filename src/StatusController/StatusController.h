@@ -2,8 +2,7 @@
 // Created by Piotr Rudnicki on 20/04/2026.
 //
 
-#ifndef AGENTNOTIFICATOR_STATUSCONTROLLER_H
-#define AGENTNOTIFICATOR_STATUSCONTROLLER_H
+#pragma once
 
 #include <vector>
 
@@ -24,4 +23,3 @@ private:
 };
 
 
-#endif //AGENTNOTIFICATOR_STATUSCONTROLLER_H

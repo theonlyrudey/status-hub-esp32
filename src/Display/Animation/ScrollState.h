@@ -2,8 +2,7 @@
 // Created by Piotr Rudnicki on 07/05/2026.
 //
 
-#ifndef AGENTNOTIFICATOR_SCROLLSTATE_H
-#define AGENTNOTIFICATOR_SCROLLSTATE_H
+#pragma once
 #include <cstdint>
 
 struct ScrollState {
@@ -15,4 +14,3 @@ struct ScrollState {
     std::uint32_t lastStepAtMs{0};
     std::uint8_t frameBuffer[8]{0};
 };
-#endif //AGENTNOTIFICATOR_SCROLLSTATE_H

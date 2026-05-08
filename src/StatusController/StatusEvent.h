@@ -2,8 +2,7 @@
 // Created by Piotr Rudnicki on 06/05/2026.
 //
 
-#ifndef AGENTNOTIFICATOR_STATUSEVENT_H
-#define AGENTNOTIFICATOR_STATUSEVENT_H
+#pragma once
 
 #include <cstdint>
 #include <cstring>
@@ -28,4 +27,3 @@ struct StatusEvent {
         std::strncpy(source, src, sizeof(source) - 1);
     }
 };
-#endif //AGENTNOTIFICATOR_STATUSEVENT_H

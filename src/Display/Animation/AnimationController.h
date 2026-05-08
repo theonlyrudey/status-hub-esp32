@@ -2,8 +2,7 @@
 // Created by Piotr Rudnicki on 07/05/2026.
 //
 
-#ifndef AGENTNOTIFICATOR_ANIMATIONCONTROLLER_H
-#define AGENTNOTIFICATOR_ANIMATIONCONTROLLER_H
+#pragma once
 #include "AnimationStateMachine.h"
 #include "ScrollState.h"
 #include "Core/ITickable.h"
@@ -36,4 +35,3 @@ private:
 };
 
 
-#endif //AGENTNOTIFICATOR_ANIMATIONCONTROLLER_H

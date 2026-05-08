@@ -2,8 +2,7 @@
 // Created by Piotr Rudnicki on 07/05/2026.
 //
 
-#ifndef AGENTNOTIFICATOR_MATRIXDISPLAYBACKEND_H
-#define AGENTNOTIFICATOR_MATRIXDISPLAYBACKEND_H
+#pragma once
 
 #include <MD_MAX72xx.h>
 
@@ -30,4 +29,3 @@ private:
     MD_MAX72XX &_display;
 };
 
-#endif //AGENTNOTIFICATOR_MATRIXDISPLAYBACKEND_H

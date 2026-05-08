@@ -2,8 +2,7 @@
 // Created by Piotr Rudnicki on 07/05/2026.
 //
 
-#ifndef AGENTNOTIFICATOR_IDISPLAY_H
-#define AGENTNOTIFICATOR_IDISPLAY_H
+#pragma once
 #include <cstdint>
 #include <string>
 
@@ -14,4 +13,3 @@ public:
     virtual void showProgress(std::string label, uint8_t percent) = 0;
     virtual void showStatus(std::string left, std::string right) = 0;
 };
-#endif //AGENTNOTIFICATOR_IDISPLAY_H

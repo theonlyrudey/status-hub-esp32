@@ -2,8 +2,7 @@
 // Created by Piotr Rudnicki on 06/05/2026.
 //
 
-#ifndef AGENTNOTIFICATOR_APPRUNTIME_H
-#define AGENTNOTIFICATOR_APPRUNTIME_H
+#pragma once
 #include <vector>
 
 #include "ITickable.h"
@@ -19,4 +18,3 @@ private:
 };
 
 
-#endif //AGENTNOTIFICATOR_APPRUNTIME_H

@@ -2,8 +2,7 @@
 // Created by Piotr Rudnicki on 20/04/2026.
 //
 
-#ifndef AGENTNOTIFICATOR_MAXBITMAPDRAWER_H
-#define AGENTNOTIFICATOR_MAXBITMAPDRAWER_H
+#pragma once
 
 #include <memory>
 
@@ -22,4 +21,3 @@ namespace MaxIcons {
 
 } // MaxIcons
 
-#endif //AGENTNOTIFICATOR_MAXBITMAPDRAWER_H

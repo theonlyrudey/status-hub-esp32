@@ -2,8 +2,7 @@
 // Created by Piotr Rudnicki on 06/05/2026.
 //
 
-#ifndef AGENTNOTIFICATOR_STATUSCODEC_H
-#define AGENTNOTIFICATOR_STATUSCODEC_H
+#pragma once
 #include <WString.h>
 #include "Status.h"
 
@@ -15,4 +14,3 @@ public:
 };
 
 
-#endif //AGENTNOTIFICATOR_STATUSCODEC_H
