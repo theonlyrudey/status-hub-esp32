@@ -1,0 +1,11 @@
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+
+# CLion / JetBrains
+.idea/
+cmake-build-*/
+
+# macOS
+.DS_Store
