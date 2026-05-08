@@ -15,7 +15,7 @@
 
 class WifiManager : public ITickable {
 public:
-    explicit WifiManager(IWifiAdapter& wifiAdapter, ICredentialsStore& credentialsStore, WifiConfig config);
+    explicit WifiManager(IWifiAdapter& wifiAdapter, ICredentialsStore& credentialsStore, const WifiConfig &config);
 
     void tick(std::uint32_t nowMs) override;
     void begin();
