@@ -6,7 +6,7 @@
 
 #include "WifiTypes.h"
 
-WifiStatusSerialListener::WifiStatusSerialListener(Print& serial) : _serial(serial) {}
+WifiStatusSerialListener::WifiStatusSerialListener(Print& serial) : _serial(serial) { }
 
 void WifiStatusSerialListener::onWifiStatusChanged(const WifiState state) {
     _serial.print("WiFi status changed: ");

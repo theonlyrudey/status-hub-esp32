@@ -25,10 +25,10 @@ StatusHubApp::StatusHubApp() :
 void StatusHubApp::begin() {
     Serial.begin(115200);
     _matrixDisplayBackend.init();
-    _displayStatusListener.setAnimationMode(AnimationMode::Sequence, false);
+    _displayStatusListener.setAnimationMode(AnimationMode::ScrollBitmap, false);
 
     _wifiStatusSerialListener.emplace(Serial);
-    _wifiManager.addListener(&*_wifiStatusSerialListener);
+    _wifiManager.addListener(&_wifiStatusSerialListener.value());
     _wifiManager.updateCredentials(WIFI_SSID, WIFI_PASSWORD);
     _wifiManager.begin();
 

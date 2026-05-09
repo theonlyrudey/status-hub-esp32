@@ -12,7 +12,8 @@
 #include "Network/WifiTypes.h"
 
 namespace {
-    const char* CREDENTIALS_NAMESPACE = "wifi_credentials";
+    constexpr char CREDENTIALS_NAMESPACE[] = "wifi_creds";
+    static_assert(sizeof(CREDENTIALS_NAMESPACE) - 1 <= 15, "NVS namespace must be <= 15 characters");
     const char* SSID_KEY = "ssid";
     const char* PASSWORD_KEY = "password";
 
@@ -28,7 +29,11 @@ bool PreferencesCredentialsStore::load(WifiCredentials &credentials) {
     credentials = WifiCredentials{};
 
     Preferences preferences;
-    preferences.begin(CREDENTIALS_NAMESPACE, true);
+    const bool beginOk = preferences.begin(CREDENTIALS_NAMESPACE, true);
+    if (!beginOk) {
+        return false;
+    }
+
     const String ssid = preferences.getString(SSID_KEY, String());
     const String password = preferences.getString(PASSWORD_KEY, String());
     preferences.end();
@@ -36,12 +41,16 @@ bool PreferencesCredentialsStore::load(WifiCredentials &credentials) {
     copyStringToBuffer(ssid, credentials.ssid);
     copyStringToBuffer(password, credentials.password);
 
-    return !ssid.isEmpty() && !password.isEmpty();
+    return !ssid.isEmpty();
 }
 
 void PreferencesCredentialsStore::save(const WifiCredentials &credentials) {
     Preferences preferences;
-    preferences.begin(CREDENTIALS_NAMESPACE, false);
+    const bool beginOk = preferences.begin(CREDENTIALS_NAMESPACE, false);
+    if (!beginOk) {
+        return;
+    }
+
     preferences.putString(SSID_KEY, credentials.ssid);
     preferences.putString(PASSWORD_KEY, credentials.password);
     preferences.end();

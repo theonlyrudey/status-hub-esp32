@@ -2,7 +2,6 @@
 #include "Core/StatusHubApp.h"
 
 StatusHubApp app;
-
 void setup()
 {
     app.begin();

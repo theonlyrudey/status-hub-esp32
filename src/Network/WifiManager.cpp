@@ -129,6 +129,7 @@ void WifiManager::addListener(IWifiStatusListener *listener) {
     }
 
     _listeners.push_back(listener);
+    listener->onWifiStatusChanged(_state);
 }
 
 void WifiManager::removeListener(IWifiStatusListener *listener) {
@@ -136,7 +137,7 @@ void WifiManager::removeListener(IWifiStatusListener *listener) {
     _listeners.erase(it, _listeners.end());
 }
 
-void WifiManager::setState(WifiState newState, const std::uint32_t nowMs) {
+void WifiManager::setState(const WifiState newState, const std::uint32_t nowMs) {
     if (_state == newState) {
         return;
     }
