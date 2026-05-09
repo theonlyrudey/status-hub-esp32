@@ -7,6 +7,9 @@
 #include <optional>
 #include <MD_MAX72xx.h>
 
+#include "Api/ApiHttpController.h"
+#include "Api/ArduinoWebServerAdapter.h"
+#include "Api/StatusRequestParser.h"
 #include "AppRuntime.h"
 #include "Display/Animation/AnimationController.h"
 #include "Display/DisplayStatusListener.h"
@@ -27,6 +30,9 @@ private:
     MD_MAX72XX _matrix;
     WifiConfig _wifiConfig{};
     StatusController _statusController{};
+    ArduinoWebServerAdapter _httpServer;
+    StatusRequestParser _statusRequestParser;
+    ApiHttpController _apiHttpController;
     AppRuntime _appRuntime{};
 
     MatrixDisplayBackend _matrixDisplayBackend;

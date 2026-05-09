@@ -17,6 +17,9 @@ namespace {
 
 StatusHubApp::StatusHubApp() :
     _matrix(HARDWARE_TYPE, CS_PIN, MAX_DEVICES),
+    _httpServer(80),
+    _statusRequestParser("http-api"),
+    _apiHttpController(_httpServer, _statusController, _statusRequestParser),
     _matrixDisplayBackend(_matrix),
     _animationController(_matrixDisplayBackend),
     _displayStatusListener(_animationController),
@@ -31,10 +34,12 @@ void StatusHubApp::begin() {
     _wifiManager.addListener(&_wifiStatusSerialListener.value());
     _wifiManager.updateCredentials(WIFI_SSID, WIFI_PASSWORD);
     _wifiManager.begin();
+    _apiHttpController.begin();
 
     _statusController.addListener(&_displayStatusListener);
     _appRuntime.registerTickable(&_animationController);
     _appRuntime.registerTickable(&_wifiManager);
+    _appRuntime.registerTickable(&_apiHttpController);
     _statusController.setStatus(StatusEvent(Status::Idle, millis(), "setup"));
 }
 

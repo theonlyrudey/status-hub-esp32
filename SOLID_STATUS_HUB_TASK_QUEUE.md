@@ -93,7 +93,7 @@ Build this project into a non-blocking, event-driven status hub on ESP32:
   - command `AnimationController` (not raw display drawing)
 - Done when status changes update visual mode immediately and cleanly.
 
-10. [ ] Add Wi-Fi bootstrap module
+10. [X] Add Wi-Fi bootstrap module
 - Create `src/Network/WifiManager.h/.cpp`.
 - Responsibilities:
   - connect to WLAN
