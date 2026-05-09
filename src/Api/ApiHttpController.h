@@ -9,9 +9,10 @@
 #include "Core/ITickable.h"
 #include "IHttpServer.h"
 #include "IStatusRequestParser.h"
+#include "Network/IWifiStatusListener.h"
 #include "StatusController/IStatusUpdater.h"
 
-class ApiHttpController : public ITickable {
+class ApiHttpController : public ITickable, public IWifiStatusListener {
 public:
     ApiHttpController(IHttpServer& httpServer,
                       IStatusUpdater& statusUpdater,
@@ -19,6 +20,7 @@ public:
 
     void begin();
     void tick(std::uint32_t nowMs) override;
+    void onWifiStatusChanged(const WifiStatusEvent& event) override;
 
 private:
     void handleSetStatusRequest();
@@ -29,4 +31,6 @@ private:
     IStatusUpdater& _statusUpdater;
     const IStatusRequestParser& _statusRequestParser;
     std::uint32_t _lastTickMs = 0;
+    bool _routeRegistered = false;
+    bool _serverStarted = false;
 };

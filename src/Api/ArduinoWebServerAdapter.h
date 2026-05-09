@@ -14,6 +14,7 @@ public:
 
     void onPost(const char* path, RequestHandler handler) override;
     void begin() override;
+    void stop() override;
     void handleClient() override;
     bool tryGetRequestBody(String& outBody) override;
     void send(int statusCode, const char* contentType, const String& payload) override;

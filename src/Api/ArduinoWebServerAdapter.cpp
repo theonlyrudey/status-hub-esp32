@@ -17,6 +17,10 @@ void ArduinoWebServerAdapter::begin() {
     _server.begin();
 }
 
+void ArduinoWebServerAdapter::stop() {
+    _server.stop();
+}
+
 void ArduinoWebServerAdapter::handleClient() {
     _server.handleClient();
 }

@@ -25,13 +25,43 @@ ApiHttpController::ApiHttpController(IHttpServer& httpServer,
       _statusRequestParser(statusRequestParser) {}
 
 void ApiHttpController::begin() {
+    if (_routeRegistered) {
+        return;
+    }
+
     _httpServer.onPost("/status", [this]() { handleSetStatusRequest(); });
-    _httpServer.begin();
+    _routeRegistered = true;
 }
 
 void ApiHttpController::tick(const std::uint32_t nowMs) {
     _lastTickMs = nowMs;
+    if (!_serverStarted) {
+        return;
+    }
     _httpServer.handleClient();
+}
+
+void ApiHttpController::onWifiStatusChanged(const WifiStatusEvent& event) {
+    if (event.state == WifiState::Connected) {
+        if (!_routeRegistered) {
+            begin();
+        }
+
+        if (_serverStarted) {
+            return;
+        }
+
+        _httpServer.begin();
+        _serverStarted = true;
+        return;
+    }
+
+    if (!_serverStarted) {
+        return;
+    }
+
+    _httpServer.stop();
+    _serverStarted = false;
 }
 
 void ApiHttpController::handleSetStatusRequest() {

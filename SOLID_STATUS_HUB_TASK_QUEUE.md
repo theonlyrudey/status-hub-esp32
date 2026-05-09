@@ -101,7 +101,7 @@ Build this project into a non-blocking, event-driven status hub on ESP32:
   - optional mDNS hostname (e.g. `agent-hub.local`)
 - Done when device reliably connects and logs reachable address.
 
-11. [ ] Add HTTP API module (`ITickable`)
+11. [X] Add HTTP API module (`ITickable`)
 - Create `src/Api/ApiHttpController.h/.cpp` using Arduino WebServer first.
 - Start with one endpoint:
   - `POST /status`
@@ -114,12 +114,12 @@ Build this project into a non-blocking, event-driven status hub on ESP32:
   - return `400` with error JSON
 - Done when API updates status without blocking animation.
 
-12. [ ] Keep JSON handling isolated
+12. [X] Keep JSON handling isolated
 - Add `src/Api/StatusRequestParser.h/.cpp`.
 - Parse/validate JSON in one place only.
 - Done when controller does not contain low-level JSON parsing logic.
 
-13. [ ] Wire composition root in `main.cpp`
+13. [X] Wire composition root in `main.cpp`
 - Compose dependencies in one place:
   - backend, status hub, listeners, animation, API, Wi-Fi, runtime
 - `setup()`:
@@ -129,14 +129,14 @@ Build this project into a non-blocking, event-driven status hub on ESP32:
   - `runtime.tick(millis())`
 - Done when `main.cpp` is mostly orchestration and has minimal logic.
 
-14. [ ] Add lightweight diagnostics
+14. [X] Add lightweight diagnostics
 - Add serial logs for:
   - wifi connected + IP
   - API request accepted/rejected
   - status transitions
 - Done when behavior is observable during bring-up.
 
-15. [ ] Add host-side API smoke checks
+15. [X] Add host-side API smoke checks
 - Document example commands in `README`:
   - `curl -X POST http://agent-hub.local/status ...`
 - Add expected responses.
