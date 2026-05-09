@@ -4,10 +4,10 @@
 
 #pragma once
 
-enum class WifiState;
+#include "WifiTypes.h"
 
 class IWifiStatusListener {
 public:
     virtual ~IWifiStatusListener() = default;
-    virtual void onWifiStatusChanged(WifiState state) = 0;
+    virtual void onWifiStatusChanged(const WifiStatusEvent& event) = 0;
 };

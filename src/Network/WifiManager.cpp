@@ -30,6 +30,14 @@ namespace {
         std::strncpy(destination, source, N - 1);
         destination[N - 1] = '\0';
     }
+
+    WifiStatusEvent makeStatusEvent(const WifiState state, IWifiAdapter& wifiAdapter) {
+        WifiStatusEvent event{state, String()};
+        if (state == WifiState::Connected) {
+            event.localIp = wifiAdapter.localIP();
+        }
+        return event;
+    }
 } // namespace
 
 WifiManager::WifiManager(IWifiAdapter &wifiAdapter, ICredentialsStore &credentialsStore, const WifiConfig &config) :
@@ -129,7 +137,7 @@ void WifiManager::addListener(IWifiStatusListener *listener) {
     }
 
     _listeners.push_back(listener);
-    listener->onWifiStatusChanged(_state);
+    listener->onWifiStatusChanged(makeStatusEvent(_state, _wifiAdapter));
 }
 
 void WifiManager::removeListener(IWifiStatusListener *listener) {
@@ -149,9 +157,10 @@ void WifiManager::setState(const WifiState newState, const std::uint32_t nowMs) 
         _currentReconnectDelayMs = initialReconnectDelay(_config);
     }
 
+    const WifiStatusEvent event = makeStatusEvent(_state, _wifiAdapter);
     for (auto* listener : _listeners) {
         if (listener != nullptr) {
-            listener->onWifiStatusChanged(_state);
+            listener->onWifiStatusChanged(event);
         }
     }
 }

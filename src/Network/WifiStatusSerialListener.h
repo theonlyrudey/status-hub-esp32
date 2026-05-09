@@ -11,7 +11,7 @@
 class WifiStatusSerialListener : public IWifiStatusListener {
 public:
     explicit WifiStatusSerialListener(Print& serial);
-    void onWifiStatusChanged(WifiState state) override;
+    void onWifiStatusChanged(const WifiStatusEvent& event) override;
 
 private:
     Print& _serial;

@@ -8,9 +8,9 @@
 
 WifiStatusSerialListener::WifiStatusSerialListener(Print& serial) : _serial(serial) { }
 
-void WifiStatusSerialListener::onWifiStatusChanged(const WifiState state) {
+void WifiStatusSerialListener::onWifiStatusChanged(const WifiStatusEvent& event) {
     _serial.print("WiFi status changed: ");
-    switch (state) {
+    switch (event.state) {
         case WifiState::Idle:
             _serial.println("Idle");
             break;
@@ -18,7 +18,13 @@ void WifiStatusSerialListener::onWifiStatusChanged(const WifiState state) {
             _serial.println("Connecting");
             break;
         case WifiState::Connected:
-            _serial.println("Connected");
+            _serial.print("Connected");
+            if (event.hasLocalIp()) {
+                _serial.print(" (");
+                _serial.print(event.localIp);
+                _serial.print(")");
+            }
+            _serial.println();
             break;
         case WifiState::Disconnected:
             _serial.println("Disconnected");

@@ -5,6 +5,7 @@
 #pragma once
 #include <cstdint>
 #include <cstring>
+#include <WString.h>
 
 enum class WifiState {
     Idle,
@@ -18,6 +19,15 @@ enum class WifiState {
 struct WifiCredentials {
     char ssid[32];
     char password[64];
+};
+
+struct WifiStatusEvent {
+    WifiState state;
+    String localIp;
+
+    bool hasLocalIp() const {
+        return localIp.length() > 0;
+    }
 };
 
 inline WifiCredentials makeWifiCredentials(const char* ssid, const char* password) {
