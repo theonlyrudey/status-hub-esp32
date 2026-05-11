@@ -7,6 +7,8 @@
 
 void Esp32WifiAdapter::beginSta(const WifiCredentials &credentials) {
     _wifi.mode(WIFI_STA);
+    _wifi.enableIPv6(false);
+    _wifi.setSleep(false);
     _wifi.begin(credentials.ssid, credentials.password);
 }
 

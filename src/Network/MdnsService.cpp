@@ -15,10 +15,23 @@ void MdnsService::onWifiStatusChanged(const WifiStatusEvent &event) {
 }
 
 void MdnsService::begin() {
-    _mdnsResponder.begin(_hostname);
+    if (_isRunning) {
+        return;
+    }
+
+    if (!_mdnsResponder.begin(_hostname)) {
+        return;
+    }
+
     _mdnsResponder.addService("http", "tcp", 80);
+    _isRunning = true;
 }
 
 void MdnsService::stop() {
+    if (!_isRunning) {
+        return;
+    }
+
     _mdnsResponder.end();
+    _isRunning = false;
 }

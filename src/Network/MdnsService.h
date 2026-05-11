@@ -17,4 +17,5 @@ private:
 
     MDNSResponder _mdnsResponder;
     String _hostname;
+    bool _isRunning = false;
 };

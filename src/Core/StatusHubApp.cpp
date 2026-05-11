@@ -28,7 +28,7 @@ StatusHubApp::StatusHubApp() :
 void StatusHubApp::begin() {
     Serial.begin(115200);
     _matrixDisplayBackend.init();
-    _displayStatusListener.setAnimationMode(AnimationMode::ScrollBitmap, false);
+    _displayStatusListener.setAnimationMode(AnimationMode::Sequence, false);
 
     _wifiStatusSerialListener.emplace(Serial);
     _wifiManager.addListener(&_wifiStatusSerialListener.value());
