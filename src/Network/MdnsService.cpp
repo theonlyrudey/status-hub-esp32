@@ -1,0 +1,24 @@
+//
+// Created by Piotr Rudnicki on 11/05/2026.
+//
+
+#include "MdnsService.h"
+
+MdnsService::MdnsService(const String &hostname) : _hostname(hostname) {}
+
+void MdnsService::onWifiStatusChanged(const WifiStatusEvent &event) {
+    if (event.state == WifiState::Connected) {
+        begin();
+    } else {
+        stop();
+    }
+}
+
+void MdnsService::begin() {
+    _mdnsResponder.begin(_hostname);
+    _mdnsResponder.addService("http", "tcp", 80);
+}
+
+void MdnsService::stop() {
+    _mdnsResponder.end();
+}

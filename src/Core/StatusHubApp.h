@@ -15,6 +15,7 @@
 #include "Display/DisplayStatusListener.h"
 #include "Display/MatrixDisplayBackend.h"
 #include "Network/Esp32WifiAdapter.h"
+#include "Network/MdnsService.h"
 #include "Network/PreferencesCredentialsStore.h"
 #include "Network/WifiManager.h"
 #include "Network/WifiStatusSerialListener.h"
@@ -31,6 +32,7 @@ private:
     WifiConfig _wifiConfig{};
     StatusController _statusController{};
     ArduinoWebServerAdapter _httpServer;
+    MdnsService _mdnsService{"status-hub"};
     StatusRequestParser _statusRequestParser;
     ApiHttpController _apiHttpController;
     AppRuntime _appRuntime{};

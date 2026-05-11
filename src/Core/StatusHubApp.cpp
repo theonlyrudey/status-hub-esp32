@@ -33,6 +33,7 @@ void StatusHubApp::begin() {
     _wifiStatusSerialListener.emplace(Serial);
     _wifiManager.addListener(&_wifiStatusSerialListener.value());
     _wifiManager.addListener(&_apiHttpController);
+    _wifiManager.addListener(&_mdnsService);
     _wifiManager.updateCredentials(WIFI_SSID, WIFI_PASSWORD);
     _wifiManager.begin();
     _apiHttpController.begin();
