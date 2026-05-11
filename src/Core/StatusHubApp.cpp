@@ -15,6 +15,7 @@ namespace {
     constexpr std::uint8_t CS_PIN = 5;
     constexpr std::uint8_t IDLE_BUTTON_PIN = 21;
     constexpr bool IDLE_BUTTON_ACTIVE_LOW = true;
+    constexpr std::uint32_t IDLE_BUTTON_DEBOUNCE_MS = 25U;
 }
 
 StatusHubApp::StatusHubApp() :
@@ -25,7 +26,7 @@ StatusHubApp::StatusHubApp() :
     _matrixDisplayBackend(_matrix),
     _animationController(_matrixDisplayBackend),
     _displayStatusListener(_animationController),
-    _idleButtonService(_statusController, IDLE_BUTTON_PIN, IDLE_BUTTON_ACTIVE_LOW),
+    _idleButtonService(_statusController, IDLE_BUTTON_PIN, IDLE_BUTTON_ACTIVE_LOW, IDLE_BUTTON_DEBOUNCE_MS),
     _wifiManager(_wifiAdapter, _credentialsStore, _wifiConfig) {}
 
 void StatusHubApp::begin() {
