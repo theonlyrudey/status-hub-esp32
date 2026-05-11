@@ -1,0 +1,4 @@
+interface:
+  display_name: "Commit Changes"
+  short_description: "Commit and push current changes safely."
+  default_prompt: "Use $commit to stage current changes, commit with a 4-6 word message, and push the current branch."

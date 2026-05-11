@@ -13,6 +13,8 @@ namespace {
     constexpr auto HARDWARE_TYPE = MD_MAX72XX::GENERIC_HW;
     constexpr std::uint8_t MAX_DEVICES = 1;
     constexpr std::uint8_t CS_PIN = 5;
+    constexpr std::uint8_t IDLE_BUTTON_PIN = 21;
+    constexpr bool IDLE_BUTTON_ACTIVE_LOW = true;
 }
 
 StatusHubApp::StatusHubApp() :
@@ -23,12 +25,14 @@ StatusHubApp::StatusHubApp() :
     _matrixDisplayBackend(_matrix),
     _animationController(_matrixDisplayBackend),
     _displayStatusListener(_animationController),
+    _idleButtonService(_statusController, IDLE_BUTTON_PIN, IDLE_BUTTON_ACTIVE_LOW),
     _wifiManager(_wifiAdapter, _credentialsStore, _wifiConfig) {}
 
 void StatusHubApp::begin() {
     Serial.begin(115200);
     _matrixDisplayBackend.init();
     _displayStatusListener.setAnimationMode(AnimationMode::Sequence, false);
+    _idleButtonService.begin();
 
     _wifiStatusSerialListener.emplace(Serial);
     _wifiManager.addListener(&_wifiStatusSerialListener.value());
@@ -40,6 +44,7 @@ void StatusHubApp::begin() {
 
     _statusController.addListener(&_displayStatusListener);
     _appRuntime.registerTickable(&_animationController);
+    _appRuntime.registerTickable(&_idleButtonService);
     _appRuntime.registerTickable(&_wifiManager);
     _appRuntime.registerTickable(&_apiHttpController);
     _statusController.setStatus(StatusEvent(Status::Idle, millis(), "setup"));

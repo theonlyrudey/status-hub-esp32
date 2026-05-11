@@ -14,6 +14,7 @@
 #include "Display/Animation/AnimationController.h"
 #include "Display/DisplayStatusListener.h"
 #include "Display/MatrixDisplayBackend.h"
+#include "Input/IdleButtonService.h"
 #include "Network/Esp32WifiAdapter.h"
 #include "Network/MdnsService.h"
 #include "Network/PreferencesCredentialsStore.h"
@@ -40,6 +41,7 @@ private:
     MatrixDisplayBackend _matrixDisplayBackend;
     AnimationController _animationController;
     DisplayStatusListener _displayStatusListener;
+    IdleButtonService _idleButtonService;
     Esp32WifiAdapter _wifiAdapter;
     PreferencesCredentialsStore _credentialsStore;
     WifiManager _wifiManager;
