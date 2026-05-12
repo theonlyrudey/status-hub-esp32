@@ -1,7 +1,7 @@
 #include <Arduino.h>
-#include "Core/StatusHubApp.h"
+#include "Core/Implementations/StatusHubApp.h"
 
-StatusHubApp app;
+statushub::StatusHubApp app;
 void setup()
 {
     app.begin();

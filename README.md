@@ -16,7 +16,8 @@ This project exposes a status update endpoint on the ESP32:
 {
   "status": "working",
   "meta": {
-    "source": "ci-runner"
+    "source": "ci-runner",
+    "message": "Compiling project"
   }
 }
 ```
@@ -27,6 +28,7 @@ This project exposes a status update endpoint on the ESP32:
 - Allowed `status` values: `idle`, `working`, `finished`, `error`.
 - `meta` is optional.
 - `meta.source` is optional string, max length `31`.
+- `meta.message` is optional string, max length `95`.
 - If `meta.source` is not provided, server uses `"http-api"`.
 
 ### JSON Schema (draft-style)
@@ -46,6 +48,10 @@ This project exposes a status update endpoint on the ESP32:
         "source": {
           "type": "string",
           "maxLength": 31
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 95
         }
       },
       "additionalProperties": true
